@@ -68,6 +68,31 @@ Cover all crypto directions:
 - Technology: L1/L2, infrastructure, new solutions
 - Macro: regulations, institutions, adoption
 
+## CRITICAL: Output Format
+
+**Output ONLY the post text. No explanations, no meta-commentary.**
+
+✅ CORRECT format:
+```
+**Вариант 1:**
+[ready-to-publish post text]
+
+**Вариант 2:**
+[ready-to-publish post text]
+
+**Вариант 3:**
+[ready-to-publish post text]
+```
+
+❌ NEVER add:
+- "**Почему сработает:**" or "**Why it works:**"
+- "Четкий тезис + killer metrics" or similar explanations
+- Any analysis of why the post is good
+- Meta-commentary about the content
+- Footnotes or explanations after variants
+
+The user will copy-paste directly to Twitter. Give them clean, publication-ready text only.
+
 ## Important
 
 - Don't auto-publish — drafts only
