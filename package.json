@@ -2,10 +2,11 @@
   "name": "ct-content-agent",
   "private": true,
   "type": "module",
-  "description": "agent project: ct-content-agent",
+  "description": "CT Content Agent for Twitter/X growth",
   "scripts": {
-    "check": "tsc --noEmit",
-    "dev": "agent-sdk dev"
+    "start": "npx @grok/agent-sdk serve --dir . --port ${PORT:-3000}",
+    "dev": "agent-sdk dev",
+    "check": "tsc --noEmit"
   },
   "dependencies": {
     "@grok/agent-sdk": "^0.7.3",
@@ -14,5 +15,8 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

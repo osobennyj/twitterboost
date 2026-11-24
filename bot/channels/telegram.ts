@@ -36,7 +36,7 @@ export default defineChannel({
     {
       method: "POST",
       path: "/webhook",
-      description: "Telegram Bot webhook для получения сообщений",
+      description: "Telegram Bot webhook for receiving messages",
       bodySchema: TelegramUpdate,
 
       async handler(_request, args) {
@@ -54,12 +54,12 @@ export default defineChannel({
         if (text.startsWith("/start")) {
           await sendTelegramMessage(
             chatId,
-            `Привет! Я CT Content Agent 🧵\n\n` +
-            `Присылай мне:\n` +
-            `• Ссылки на трендовые крипто-посты\n` +
-            `• Скриншоты интересного контента\n` +
-            `• Описание тренда или новости\n\n` +
-            `Я проанализирую и предложу 2-3 варианта поста в CT стиле.`
+            `Hey! I'm CT Content Agent 🧵\n\n` +
+            `Send me:\n` +
+            `• Links to trending crypto posts\n` +
+            `• Screenshots of interesting content\n` +
+            `• Trend or news descriptions\n\n` +
+            `I'll analyze and offer 2-3 post variants in CT style.`
           );
           return new Response(JSON.stringify({ ok: true }), { status: 200 });
         }
@@ -67,17 +67,24 @@ export default defineChannel({
         if (text.startsWith("/help")) {
           await sendTelegramMessage(
             chatId,
-            `📚 Как использовать бота:\n\n` +
-            `1. Пришли ссылку на твит или описание тренда\n` +
-            `2. Получи анализ и 2-3 варианта поста\n` +
-            `3. Выбери номер (1, 2, 3) или попроси изменения\n` +
-            `4. Скопируй финальный вариант для постинга`
+            `📚 How to use the bot:\n\n` +
+            `1. Send a tweet link or trend description\n` +
+            `2. Get analysis and 2-3 post variants\n` +
+            `3. Pick a number (1, 2, 3) or request changes\n` +
+            `4. Copy the final version for posting`
           );
           return new Response(JSON.stringify({ ok: true }), { status: 200 });
         }
 
+        await sendTypingAction(chatId);
+        
+        await sendTelegramMessage(
+          chatId,
+          `🔄 Got it! Analyzing your content and preparing draft options...\n\nThis usually takes 10-30 seconds.`
+        );
+
         const userMessage = hasPhoto
-          ? `[Скриншот от @${username}] ${text || "Без описания"}`
+          ? `[Screenshot from @${username}] ${text || "No description"}`
           : text;
 
         await args.host.kv.put(`telegram:chat:${chatId}`, { chatId, username });
@@ -103,6 +110,24 @@ export default defineChannel({
     },
   },
 });
+
+async function sendTypingAction(chatId: number): Promise<void> {
+  const botToken = process.env.CT_TELEGRAM_BOT_TOKEN;
+  if (!botToken) return;
+
+  try {
+    await fetch(`https://api.telegram.org/bot${botToken}/sendChatAction`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: chatId,
+        action: "typing",
+      }),
+    });
+  } catch (error) {
+    console.error("Failed to send typing action:", error);
+  }
+}
 
 async function sendTelegramMessage(chatId: number, text: string): Promise<void> {
   const botToken = process.env.CT_TELEGRAM_BOT_TOKEN;

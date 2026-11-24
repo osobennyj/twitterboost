@@ -1,187 +1,193 @@
 # CT Writing Style Guide
 
-Это детальный гайд по написанию контента в стиле Crypto Twitter (CT).
+This is a detailed guide for writing Crypto Twitter (CT) content.
 
-## Основные принципы
+## LANGUAGE: All content must be in English
 
-### 1. Прямота
-- Никакой воды — сразу к сути
-- Первое предложение = главный тезис
-- Каждое слово должно нести смысл
+## Core Principles
 
-### 2. Лаконичность
-- Максимум 280 символов для одного твита
-- Короткие предложения (10-15 слов)
-- Bullet points для списков
+### 1. Directness
+- No fluff — get to the point immediately
+- First sentence = main thesis
+- Every word must carry meaning
 
-### 3. Данные и факты
-- Числа убедительнее слов
-- Проценты, суммы, метрики
-- Источники когда возможно
+### 2. Brevity
+- Maximum 280 characters for a single tweet
+- Short sentences (10-15 words)
+- Bullet points for lists
 
-### 4. CT жаргон (используй умеренно)
-- alpha — эксклюзивная информация
-- degen — рискованный трейдер
-- ape — входить без анализа
-- WAGMI/NGMI — позитив/негатив
-- ser — обращение
+### 3. Data and Facts
+- Numbers beat words
+- Percentages, amounts, metrics
+- Sources when possible
+
+### 4. CT Jargon (use moderately)
+- alpha — exclusive information
+- degen — risky trader
+- ape — enter without analysis
+- WAGMI/NGMI — positive/negative outlook
+- ser — form of address
 - NFA — not financial advice
 - DYOR — do your own research
 - fren — friend
 - gm/gn — good morning/night
+- rekt — wrecked (lost money)
+- wen — when
+- probably nothing — something significant
 
-## Форматы постов
+## Post Formats
 
-### Reply (комментарий)
+### Reply (comment)
 ```
-Формула: Контекст + Инсайт + (опционально) Вопрос
+Formula: Context + Insight + (optional) Question
 
-Пример:
-"Важный момент: TVL вырос на 40%, но активные адреса упали на 15%. 
-Это говорит о концентрации капитала, а не реальном adoption."
+Example:
+"Important context: TVL grew 40% but active addresses dropped 15%. 
+This signals capital concentration, not real adoption."
 ```
 
 ### Original Post
 ```
-Формула: Hook + Факт/Данные + Вывод/Инсайт
+Formula: Hook + Fact/Data + Conclusion/Insight
 
-Пример:
-"ETH стейкинг достиг 30M ETH.
+Example:
+"ETH staking reached 30M ETH.
 
-Что это значит:
-- Меньше sell pressure
-- Больше сетевой безопасности  
-- Рост реального yield
+What this means:
+- Less sell pressure
+- More network security  
+- Growing real yield
 
-Bullish для долгосрока."
+Bullish for the long term."
 ```
 
-### Thread Hook (первый твит треда)
+### Thread Hook (first tweet)
 ```
-Формула: Провокация/Обещание + Teaser + CTA (👇 или "Тред:")
+Formula: Provocation/Promise + Teaser + CTA (👇 or "Thread:")
 
-Пример:
-"Нашёл протокол, который даёт 50% APY на стейблы.
+Example:
+"Found a protocol giving 50% APY on stables.
 
-Звучит как скам? Разобрал механику.
+Sounds like a scam? I broke down the mechanics.
 
-Спойлер: это реально работает. Тред 👇"
+Spoiler: it actually works. Thread 👇"
 ```
 
-## Тональность по темам
+## Tone by Topic
 
 ### DeFi
-- Акцент на риски и rewards
-- Сравнение с конкурентами
-- Механика протоколов
+- Focus on risks and rewards
+- Comparison with competitors
+- Protocol mechanics
 
-Пример: "Новый DEX с 0.01% комиссией. Звучит круто, но где catch? Разбираю токеномику и risk/reward."
+Example: "New DEX with 0.01% fees. Sounds great, but where's the catch? Breaking down tokenomics and risk/reward."
 
 ### Trading
-- Технические уровни
+- Technical levels
 - Risk management
-- Без "финансовых советов"
+- No "financial advice"
 
-Пример: "BTC на ключевом уровне $65k. Пробой = новый ATH. Отбой = тест $60k. Watching closely. NFA."
+Example: "BTC at key $65k level. Breakout = new ATH. Rejection = test $60k. Watching closely. NFA."
 
 ### Narratives
 - Timing is everything
-- Исторические параллели
-- Скептицизм к хайпу
+- Historical parallels
+- Skepticism toward hype
 
-Пример: "AI tokens напоминают DeFi summer 2020. Те же паттерны: 10x за месяц, потом -90%. Осторожно с timing."
+Example: "AI tokens remind me of DeFi summer 2020. Same patterns: 10x in a month, then -90%. Be careful with timing."
 
 ### Technology
-- Упрощение сложного
-- Практические импликации
-- Adoption метрики
+- Simplify complexity
+- Practical implications
+- Adoption metrics
 
-Пример: "ZK rollups: наконец масштабирование без компромиссов на безопасности. ELI5 в треде."
+Example: "ZK rollups: finally scaling without security compromises. ELI5 in thread."
 
 ### Macro
-- Влияние на крипту
-- Институциональный угол
-- Регуляторные риски
+- Impact on crypto
+- Institutional angle
+- Regulatory risks
 
-Пример: "SEC подала иск на очередной проект. Что это значит для рынка? Спойлер: не так страшно. Разбор:"
+Example: "SEC filed another lawsuit. What does it mean for the market? Spoiler: not as scary as it seems. Breakdown:"
 
-## Структурные элементы
+## Structural Elements
 
-### Эмодзи (умеренно)
-- 🧵 — начало треда
-- 👇 — продолжение ниже
-- 📊 — данные/статистика
-- 🔍 — исследование
-- ⚠️ — предупреждение
-- 💡 — инсайт
-- 🎯 — ключевой point
+### Emojis (use sparingly)
+- 🧵 — thread start
+- 👇 — continuation below
+- 📊 — data/statistics
+- 🔍 — research
+- ⚠️ — warning
+- 💡 — insight
+- 🎯 — key point
 
-### Форматирование
+### Formatting
 ```
-Переносы строк для читаемости:
+Line breaks for readability:
 
-Первая мысль.
+First thought.
 
-Вторая мысль.
+Second thought.
 
-Вывод.
+Conclusion.
 ```
 
 ### Call-to-Action
-- "Согласны? Пишите в реплаи"
-- "RT если полезно"
-- "Сохраняй для референса"
-- "Follow для больше alpha"
+- "Agree? Drop your thoughts"
+- "RT if useful"
+- "Save for reference"
+- "Follow for more alpha"
 
-## Чего избегать
+## What to Avoid
 
-❌ Длинные предложения без пауз
-❌ Избыточные прилагательные
-❌ Пустые фразы ("интересно отметить", "стоит сказать")
-❌ Слишком много эмодзи
-❌ Агрессивный shilling
-❌ Прямые финансовые советы
-❌ Fake urgency ("СРОЧНО", "ПОСЛЕДНИЙ ШАНС")
+❌ Long sentences without breaks
+❌ Excessive adjectives
+❌ Empty phrases ("it's interesting to note", "worth mentioning")
+❌ Too many emojis
+❌ Aggressive shilling
+❌ Direct financial advice
+❌ Fake urgency ("URGENT", "LAST CHANCE")
 
-## Примеры хороших постов
+## Good Post Examples
 
-### Аналитический
+### Analytical
 ```
-Arbitrum vs Optimism за Q3:
+Arbitrum vs Optimism Q3:
 
 TVL: $5.8B vs $3.2B
 Daily txs: 1.2M vs 400K
 Unique wallets: +45% vs +12%
 
-Данные не врут. $ARB выигрывает adoption race.
+Data doesn't lie. $ARB is winning the adoption race.
 ```
 
-### Провокационный
+### Provocative
 ```
-Unpopular opinion: 90% NFT проектов мертвы.
+Unpopular opinion: 90% of NFT projects are dead.
 
-Но оставшиеся 10% создадут больше ценности, чем все вместе в 2021.
+But the remaining 10% will create more value than all of them combined in 2021.
 
-Качество > количество. Всегда.
-```
-
-### Образовательный
-```
-Staking vs Lending — в чём разница?
-
-Staking: помогаешь сети, получаешь награды
-Lending: даёшь в долг, получаешь проценты
-
-Риски разные. Staking = slashing. Lending = дефолт.
-
-Выбирай осознанно.
+Quality > quantity. Always.
 ```
 
-## Checklist перед публикацией
+### Educational
+```
+Staking vs Lending — what's the difference?
 
-- [ ] Уложился в 280 символов?
-- [ ] Есть ли конкретика (числа, факты)?
-- [ ] Понятно ли без контекста?
-- [ ] Добавляет ли ценность?
-- [ ] Не звучит ли как shilling?
-- [ ] NFA/DYOR если нужно?
+Staking: help the network, earn rewards
+Lending: lend out, earn interest
+
+Different risks. Staking = slashing. Lending = default.
+
+Choose wisely.
+```
+
+## Pre-publish Checklist
+
+- [ ] Under 280 characters?
+- [ ] Has specifics (numbers, facts)?
+- [ ] Clear without context?
+- [ ] Adds value?
+- [ ] Doesn't sound like shilling?
+- [ ] NFA/DYOR if needed?
+- [ ] Written in English?
