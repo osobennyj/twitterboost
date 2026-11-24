@@ -42,7 +42,10 @@ export default defineChannel({
       async handler(_request, args) {
         const update = args.body as TelegramUpdateBody | undefined;
 
+        console.log("[telegram] Received webhook update:", JSON.stringify(update?.update_id));
+
         if (!update?.message) {
+          console.log("[telegram] No message in update, skipping");
           return new Response(JSON.stringify({ ok: true }), { status: 200 });
         }
 
@@ -50,6 +53,8 @@ export default defineChannel({
         const username = update.message.from?.username || "user";
         const text = update.message.text || update.message.caption || "";
         const hasPhoto = Boolean(update.message.photo?.length);
+
+        console.log("[telegram] Processing message from chat:", chatId, "text:", text.slice(0, 50));
 
         if (text.startsWith("/start")) {
           await sendTelegramMessage(
@@ -87,11 +92,20 @@ export default defineChannel({
           ? `[Screenshot from @${username}] ${text || "No description"}`
           : text;
 
+        console.log("[telegram] Saving chat info and starting session...");
         await args.host.kv.put(`telegram:chat:${chatId}`, { chatId, username });
 
-        const session = await args.send(userMessage);
+        try {
+          console.log("[telegram] Calling args.send() with message:", userMessage.slice(0, 50));
+          const session = await args.send(userMessage);
+          console.log("[telegram] Session created:", session.id, "isNew:", session.isNew);
 
-        await args.host.kv.put(`session:${session.id}:chatId`, chatId);
+          await args.host.kv.put(`session:${session.id}:chatId`, chatId);
+          console.log("[telegram] Saved session-chatId mapping");
+        } catch (error) {
+          console.error("[telegram] Error in args.send():", error);
+          await sendTelegramMessage(chatId, "❌ Error starting session. Please try again.");
+        }
 
         return new Response(JSON.stringify({ ok: true }), { status: 200 });
       },
@@ -100,12 +114,25 @@ export default defineChannel({
 
   events: {
     async "turn.completed"(event, _channel, ctx) {
+      console.log("[telegram] turn.completed event for session:", event.sessionId);
+      
       const chatId = await ctx.host.kv.get(`session:${event.sessionId}:chatId`);
-      if (!chatId || typeof chatId !== "number") return;
+      console.log("[telegram] Retrieved chatId:", chatId);
+      
+      if (!chatId || typeof chatId !== "number") {
+        console.log("[telegram] No valid chatId found, skipping response");
+        return;
+      }
 
       const response = event.data.result;
+      console.log("[telegram] Model response length:", response?.length || 0);
+      
       if (response) {
         await sendTelegramMessage(chatId, response);
+        console.log("[telegram] Sent response to Telegram");
+      } else {
+        console.log("[telegram] No response from model");
+        await sendTelegramMessage(chatId, "⚠️ No response generated. Please try again with a different input.");
       }
     },
   },
@@ -137,7 +164,7 @@ async function sendTelegramMessage(chatId: number, text: string): Promise<void> 
   }
 
   try {
-    await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -145,6 +172,7 @@ async function sendTelegramMessage(chatId: number, text: string): Promise<void> 
         text: text.slice(0, 4096),
       }),
     });
+    console.log("[telegram] sendMessage response status:", response.status);
   } catch (error) {
     console.error("Failed to send Telegram message:", error);
   }
