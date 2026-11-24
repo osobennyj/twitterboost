@@ -4,7 +4,7 @@
   "type": "module",
   "description": "CT Content Agent for Twitter/X growth",
   "scripts": {
-    "start": "npx @grok/agent-sdk serve --dir . --port ${PORT:-3000}",
+    "start": "npx @grok/agent-sdk serve --dir . --host 0.0.0.0 --port ${PORT:-3000}",
     "dev": "agent-sdk dev",
     "check": "tsc --noEmit"
   },
