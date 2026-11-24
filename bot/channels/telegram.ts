@@ -43,6 +43,9 @@ export default defineChannel({
         const update = args.body as TelegramUpdateBody | undefined;
 
         console.log("[telegram] Received webhook update:", JSON.stringify(update?.update_id));
+        console.log("[telegram] CURSOR_API_KEY present:", !!process.env.CURSOR_API_KEY);
+        console.log("[telegram] CURSOR_API_KEY prefix:", process.env.CURSOR_API_KEY?.substring(0, 15) + "...");
+        console.log("[telegram] CT_TELEGRAM_BOT_TOKEN present:", !!process.env.CT_TELEGRAM_BOT_TOKEN);
 
         if (!update?.message) {
           console.log("[telegram] No message in update, skipping");
@@ -97,14 +100,22 @@ export default defineChannel({
 
         try {
           console.log("[telegram] Calling args.send() with message:", userMessage.slice(0, 50));
+          console.log("[telegram] args.send type:", typeof args.send);
+          
           const session = await args.send(userMessage);
+          
           console.log("[telegram] Session created:", session.id, "isNew:", session.isNew);
+          console.log("[telegram] Session object keys:", Object.keys(session));
 
           await args.host.kv.put(`session:${session.id}:chatId`, chatId);
-          console.log("[telegram] Saved session-chatId mapping");
-        } catch (error) {
-          console.error("[telegram] Error in args.send():", error);
-          await sendTelegramMessage(chatId, "❌ Error starting session. Please try again.");
+          console.log("[telegram] Saved session-chatId mapping for session:", session.id);
+          
+        } catch (error: unknown) {
+          const err = error as Error;
+          console.error("[telegram] ❌ Error in args.send():", err.message);
+          console.error("[telegram] Error stack:", err.stack);
+          console.error("[telegram] Full error:", JSON.stringify(error, Object.getOwnPropertyNames(error as object)));
+          await sendTelegramMessage(chatId, `❌ Error: ${err.message || "Unknown error"}`);
         }
 
         return new Response(JSON.stringify({ ok: true }), { status: 200 });
@@ -114,7 +125,8 @@ export default defineChannel({
 
   events: {
     async "turn.completed"(event, _channel, ctx) {
-      console.log("[telegram] turn.completed event for session:", event.sessionId);
+      console.log("[telegram] ✅ turn.completed event for session:", event.sessionId);
+      console.log("[telegram] turn.completed data:", JSON.stringify(event.data).slice(0, 500));
       
       const chatId = await ctx.host.kv.get(`session:${event.sessionId}:chatId`);
       console.log("[telegram] Retrieved chatId:", chatId);
@@ -135,6 +147,18 @@ export default defineChannel({
         await sendTelegramMessage(chatId, "⚠️ No response generated. Please try again with a different input.");
       }
     },
+
+    async "turn.failed"(event, _channel, ctx) {
+      console.error("[telegram] ❌ turn.failed event for session:", event.sessionId);
+      console.error("[telegram] turn.failed data:", JSON.stringify(event.data));
+      
+      const chatId = await ctx.host.kv.get(`session:${event.sessionId}:chatId`);
+      if (chatId && typeof chatId === "number") {
+        const errorMsg = (event.data as { error?: string })?.error || "Unknown error";
+        await sendTelegramMessage(chatId, `❌ Generation failed: ${errorMsg}`);
+      }
+    },
+
   },
 });
 
