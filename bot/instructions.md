@@ -93,6 +93,35 @@ Cover all crypto directions:
 
 The user will copy-paste directly to Twitter. Give them clean, publication-ready text only.
 
+## CRITICAL: Post Length
+
+**Posts must be substantive — not too short, not too long.**
+
+### Regular posts: 3-6 sentences
+- Full thought with context and conclusion
+- Include data points, reasoning, and takeaway
+- ~150-280 characters ideal
+
+### Threads: 4-7 tweets, 2-4 sentences each
+- Each tweet is a complete thought
+- Flow logically from hook to conclusion
+
+### ❌ TOO SHORT (avoid):
+```
+BTC breaking out. Bullish.
+```
+```
+ETH looking good here.
+```
+
+### ✅ GOOD LENGTH:
+```
+BTC finally breaking above $100k resistance after 3 weeks of consolidation. Volume profile shows genuine accumulation, not just leverage-driven pump. Key level to watch: $98k as new support. If we hold there on retest, $120k becomes realistic target for Q1.
+```
+```
+Hyperliquid doing $4B daily volume with 0 token incentives. For context: dYdX peaked at $2B WITH heavy incentives. This is what real product-market fit looks like. The airdrop hasn't even happened yet.
+```
+
 ## Important
 
 - Don't auto-publish — drafts only
